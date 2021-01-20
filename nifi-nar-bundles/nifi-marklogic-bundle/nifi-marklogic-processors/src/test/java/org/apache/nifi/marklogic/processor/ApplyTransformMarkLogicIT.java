@@ -16,14 +16,6 @@
  */
 package org.apache.nifi.marklogic.processor;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
-import org.apache.nifi.flowfile.attributes.CoreAttributes;
-import org.apache.nifi.reporting.InitializationException;
-import org.apache.nifi.util.TestRunner;
-
 import com.marklogic.client.datamovement.WriteBatcher;
 import com.marklogic.client.document.DocumentPage;
 import com.marklogic.client.io.DocumentMetadataHandle;
@@ -31,9 +23,16 @@ import com.marklogic.client.io.Format;
 import com.marklogic.client.io.StringHandle;
 import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.RawCombinedQueryDefinition;
+import org.apache.nifi.flowfile.attributes.CoreAttributes;
+import org.apache.nifi.reporting.InitializationException;
+import org.apache.nifi.util.TestRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class ApplyTransformMarkLogicIT extends AbstractMarkLogicIT {
     private String collection;
@@ -109,7 +108,6 @@ public class ApplyTransformMarkLogicIT extends AbstractMarkLogicIT {
 
     @AfterEach
     public void teardown() {
-        super.teardown();
         deleteDocumentsInCollection(collection);
     }
 }
